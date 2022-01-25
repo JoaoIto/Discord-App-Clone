@@ -1,4 +1,4 @@
-import { NodePath, PluginObj, types as BabelTypes } from '@babel/core';
+import { NodePath, PluginObj, types as BabelTypes } from 'next/dist/compiled/babel/core';
 export declare const EXPORT_NAME_GET_STATIC_PROPS = "getStaticProps";
 export declare const EXPORT_NAME_GET_STATIC_PATHS = "getStaticPaths";
 export declare const EXPORT_NAME_GET_SERVER_PROPS = "getServerSideProps";

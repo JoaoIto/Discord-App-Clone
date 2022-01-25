@@ -1,1 +1,1 @@
-export declare function writeAppTypeDeclarations(baseDir: string): Promise<void>;
+export declare function writeAppTypeDeclarations(baseDir: string, imageImportsEnabled: boolean): Promise<void>;
