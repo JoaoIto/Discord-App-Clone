@@ -1,6 +1,7 @@
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
 import appConfig from "../config.json";
-
+import React from "react";
+import {useRouter} from "next/router"
 function GlobalStyle() {
   return (
     <style global jsx>{`
@@ -11,7 +12,7 @@ function GlobalStyle() {
         list-style: none;
       }
       body {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
       }
       /* App fit Height */
       html,
@@ -61,11 +62,13 @@ function Titulo(props) {
 // export default HomePage;
 
 export default function PaginaInicial() {
-  const username = "peas";
+  //const username = "JoaoIto";
+
+  const [username, setUsername] = React.useState("");
+  const router = useRouter();
 
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: "flex",
@@ -100,6 +103,11 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function submit(info){
+              info.preventDefault()
+              console.log("submit")
+              window.location.href = "./chat"
+            }}
             styleSheet={{
               display: "flex",
               flexDirection: "column",
@@ -120,8 +128,27 @@ export default function PaginaInicial() {
             >
               {appConfig.name}
             </Text>
-
+           {/* <input
+              type="text"
+              value={username}
+              onChange={function handle(event) {
+                console.log("digit");
+                // Valor da varival
+                const valor = event.target.value;
+                // função que usa variavel para trocar para o valor atual
+                setUsername(valor);
+              }}
+            />*/}
             <TextField
+            value={username}
+              onChange={function handle(event) {
+                console.log("digit");
+                // Valor da varival
+                const valor = event.target.value;
+                // função que usa variavel para trocar para o valor atual
+                setUsername(valor);
+              }
+            }
               fullWidth
               textFieldColors={{
                 neutral: {
@@ -130,8 +157,7 @@ export default function PaginaInicial() {
                   mainColorHighlight: appConfig.theme.colors.primary[500],
                   backgroundColor: appConfig.theme.colors.neutrals[800],
                 },
-              }}
-            />
+              }}/>
             <Button
               type="submit"
               label="Entrar"
