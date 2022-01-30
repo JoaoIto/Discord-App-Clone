@@ -30,7 +30,6 @@ function GlobalStyle() {
   }
   
   export default function MyApp({ Component, pageProps }) {
-  console.log("Roda tudo");
   return (
     <>
     <GlobalStyle/>
