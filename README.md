@@ -11,3 +11,13 @@
 - Vamos ver a estrutura inicial de um projeto Next.js;
 - Passaremos propriedades para components;
 - Faremos deploy do seu Aluracord na Vercel.
+
+## **Preview**
+
+### **Log 🧑🏼‍💻**
+<img src="./pages/components/log/log_print.png">
+
+### **Chat page**
+<img src="./pages/components/chat/chat_print.png">
+
+# 
