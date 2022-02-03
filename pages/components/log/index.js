@@ -46,7 +46,7 @@ export default function PaginaInicial() {
           justifyContent: "center",
           backgroundColor: appConfig.theme.colors.primary[500],
           backgroundImage:
-            "url(./assets/img/vasco.png)",
+            "url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundBlendMode: "multiply",
@@ -76,7 +76,7 @@ export default function PaginaInicial() {
             onSubmit={(info) => {
               info.preventDefault()
               console.log("submit")
-              window.location.href = "./chat"
+              window.location.href = "/components/chat"
             }}
             styleSheet={{
               display: "flex",
