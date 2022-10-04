@@ -15,7 +15,7 @@
 ## **Preview**
 
 ### **Log 🧑🏼‍💻**
-<img src="https://raw.githubusercontent.com/JoaoIto/alura_discord/main/pages/components/log/log_print.png">
+<img src="https://raw.githubusercontent.com/JoaoIto/alura_discord/main/pages/components/log/log_print.png#vitrinedev">
 
 ### **Chat page**
 <img src="https://raw.githubusercontent.com/JoaoIto/alura_discord/main/pages/components/chat/chat_print.png">
