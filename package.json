@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "./",
+  "homepage": "https://github.com/JoaoIto/alura_discord-React",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
