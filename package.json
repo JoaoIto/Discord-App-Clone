@@ -10,7 +10,7 @@
     "lint": "next lint",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "homepage": "https://JoaoIto.github.io/aluraDiscord"
+    "homepage": "https://joaoito.github.io/alura_discord-React/"
   },
   "keywords": [],
   "author": "",
