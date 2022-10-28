@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "./pages/index.js",
+  "homepage": "https://joaoito.github.io/{repo-name}",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +18,11 @@
   "dependencies": {
     "@skynexui/components": "^1.23.9",
     "@supabase/supabase-js": "^1.29.4",
-    "gh-pages": "^4.0.0",
     "next": "^12.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
