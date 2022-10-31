@@ -1,8 +1,6 @@
 {
   "name": "alura_discord",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "homepage": "https://joaoito.github.io/alura_discord-React",
   "scripts": {
     "predeploy": "npm run build",
