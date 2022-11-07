@@ -1,4 +1,4 @@
-# AluraCord 🖥️
+# [AluraCord🖥️](https://discord-app-gamma.vercel.app/)
 
 *Nestas aulas de React começaremos a fazer a nossa área de login no *Aluracord! E você vai colocá-la no ar!**
 
