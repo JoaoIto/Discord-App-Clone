@@ -21,6 +21,8 @@
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.18",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
