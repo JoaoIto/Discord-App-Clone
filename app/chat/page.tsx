@@ -12,6 +12,7 @@ export default function ChatPage() {
         const getMensagens = async () => {
             try {
                 const response = await axios.get('/api/chat/mensagens');
+                console.log(response.data)
                 setListaDeMensagens(response.data);
             } catch (error) {
                 console.error('Erro ao buscar mensagens:', error);
@@ -26,14 +27,23 @@ export default function ChatPage() {
             return;
         }
 
+        // Criar um objeto JSON com a mensagem e o remetente
+        const novaMensagem = {
+            de,
+            texto: mensagem,
+        };
+
+        // Exibir o objeto no console
+        console.log('Nova Mensagem:', novaMensagem);
         try {
+            console.log()
             // Enviar a nova mensagem para a API
-            await axios.post('/api/chat/mensagens', { de, texto: mensagem });
+            await axios.post('/api/chat/mensagens', novaMensagem);
 
             // Atualizar a lista de mensagens
             setListaDeMensagens([
                 ...listaDeMensagens,
-                { de, texto: mensagem },
+                novaMensagem,
             ]);
 
             // Limpar a caixa de mensagem
