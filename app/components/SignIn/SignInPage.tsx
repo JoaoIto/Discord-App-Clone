@@ -24,8 +24,8 @@ export default function PaginaInicial() {
             <Head>
                 <title>Discord App</title>
             </Head>
-            <div className="flex items-center justify-center min-h-screen bg-primary bg-cover bg-blend-multiply bg-fixed">
-                <div className="flex items-center justify-between flex-col sm:flex-row w-full max-w-screen-lg rounded p-8 m-4 shadow-md bg-green-700">
+            <div className="flex items-center justify-center min-h-[600] bg-primary bg-cover bg-blend-multiply bg-fixed">
+                <div className="flex items-center justify-between flex-col h-full sm:flex-row w-full max-w-screen-lg rounded p-8 m-4 shadow-md bg-green-700">
                     <form onSubmit={handleFormSubmit} className="flex flex-col items-center justify-center w-full sm:w-1/2 mb-4 sm:mb-0">
                         <h2 className="text-2xl font-semibold text-white mb-4">Boas vindas de volta!</h2>
                         <input
