@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -34,18 +34,16 @@ export default function PaginaInicial() {
                             fullWidth
                             className="text-gray-200 bg-gray-900 border-primary-500"
                         />
-                        <Button
+                        <button
                             type="submit"
-                            label="Entrar"
-                            fullWidth
                             className="text-white bg-primary-500"
                         />
                     </form>
                     <div className="flex flex-col items-center w-full sm:w-1/2 max-w-xs p-4 bg-gray-800 border border-gray-900 rounded flex-1 min-h-40">
-                        <Image className="rounded-full mb-4" src={`https://github.com/${username}.png`} />
-                        <Text variant="body4" className="text-gray-200 bg-gray-900 p-1.5 px-5 rounded-full">
+                        <img className="rounded-full mb-4" src={`https://github.com/${username}.png`} />
+                        <h2 className="text-gray-200 bg-gray-900 p-1.5 px-5 rounded-full">
                             {username}
-                        </Text>
+                        </h2>
                     </div>
                 </div>
             </div>
