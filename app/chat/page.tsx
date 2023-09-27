@@ -2,18 +2,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+interface Mensagem {
+    de: string;
+    mensagem: string;
+}
+
 export default function ChatPage() {
     const [mensagem, setMensagem] = useState('');
-    const [listaDeMensagens, setListaDeMensagens] = useState<Array<{ de: string; texto: string }>>([]);
+    const [listaDeMensagens, setListaDeMensagens] = useState<Mensagem[]>([]);
     const [de, setDe] = useState('JoaoIto');
 
     useEffect(() => {
-        // Função para buscar as mensagens da API
         const getMensagens = async () => {
             try {
-                const response = await axios.get('/api/chat/mensagens');
-                console.log(response.data)
-                setListaDeMensagens(response.data);
+                const response = await axios.get('/api/mensagens');
+                if (Array.isArray(response.data.mensagens)) {
+                    setListaDeMensagens(response.data.mensagens);
+                }
             } catch (error) {
                 console.error('Erro ao buscar mensagens:', error);
             }
@@ -27,26 +32,16 @@ export default function ChatPage() {
             return;
         }
 
-        // Criar um objeto JSON com a mensagem e o remetente
-        const novaMensagem = {
+        const novaMensagem: Mensagem = {
             de,
-            texto: mensagem,
+            mensagem: mensagem, // Use o nome de chave "mensagem" em vez de "texto" para corresponder à estrutura dos dados
         };
 
-        // Exibir o objeto no console
         console.log('Nova Mensagem:', novaMensagem);
         try {
-            console.log()
-            // Enviar a nova mensagem para a API
-            await axios.post('/api/chat/mensagens', novaMensagem);
+            await axios.post('/api/mensagens', novaMensagem);
 
-            // Atualizar a lista de mensagens
-            setListaDeMensagens([
-                ...listaDeMensagens,
-                novaMensagem,
-            ]);
-
-            // Limpar a caixa de mensagem
+            setListaDeMensagens([...listaDeMensagens, novaMensagem]);
             setMensagem('');
         } catch (error) {
             console.error('Erro ao enviar mensagem:', error);
@@ -60,7 +55,7 @@ export default function ChatPage() {
                 <ul>
                     {listaDeMensagens.map((mensagem, index) => (
                         <li key={index}>
-                            {mensagem.de}: {mensagem.texto}
+                            {mensagem.de}: {mensagem.mensagem} {/* Use a chave "mensagem" para exibir a mensagem */}
                         </li>
                     ))}
                 </ul>
