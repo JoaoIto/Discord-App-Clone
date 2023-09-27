@@ -49,7 +49,7 @@ export default function ChatPage() {
             <div className="flex bg-slate-800 border border-solid border-2 rounded border-slate-200 flex-col flex-1 shadow-md rounded bg-neutrals-700 max-w-2xl max-h-95vh p-8">
                 <div className="w-full mb-16 flex items-center justify-between">
                     <h1 className="text-xl font-bold">Chat</h1>
-                    <button className="text-neutral-300 hover:text-primary" onClick={() => window.location.href = '/'}>
+                    <button className="text-neutral-300 hover:text-primary bg-red-600 p-4 rounded" onClick={() => window.location.href = '/'}>
                         Logout
                     </button>
                 </div>
