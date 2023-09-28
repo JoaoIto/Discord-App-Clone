@@ -1,9 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import connectToDatabase from '../../../app/database/database';
 import {NextRequest, NextResponse} from 'next/server';
+import {AxiosResponse} from "axios";
 let db = await connectToDatabase();
 let collection = db.collection('mensagens');
 
+interface NovaMensagem{
+    de: string;
+    mensagem: string
+}
 export async function GET(req: NextRequest, res: NextApiResponse) {
     if (req.method === 'GET') {
         try {
@@ -19,7 +24,7 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
         return NextResponse.error();
     }
 }
-export async function POST(req: NextRequest, body: {de: string, mensagem: string}) {
+export async function POST(req: NextRequest, body: AxiosResponse) {
     if (req.method === 'POST') {
         try {
             // Teste a conexão com o banco de dados e retorne o resultado
@@ -27,12 +32,12 @@ export async function POST(req: NextRequest, body: {de: string, mensagem: string
             const collection = db.collection('mensagens')
 
             const novaMensagem = {
-                de: body.de,
-                mensagem: body.mensagem
-            }
+                de: body.data.de,
+                mensagem: body.data.mensagem
+            };
 
-            const result = await collection.insertOne({novaMensagem});
-            return NextResponse.json({"message": "mensagem inserida!", novaMensagem});
+            const result = await collection.insertOne({de: novaMensagem.de, mensagem: novaMensagem.mensagem});
+            return NextResponse.json(novaMensagem);
         } catch (error: any) {
             return NextResponse.json({ error: error.message });
         }

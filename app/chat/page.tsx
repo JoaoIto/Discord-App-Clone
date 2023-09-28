@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 interface Mensagem {
     de: string;
@@ -30,14 +30,19 @@ export default function ChatPage() {
             return;
         }
 
+        console.log(mensagem)
         const novaMensagem = {
-            de,
+            de: de,
             mensagem: mensagem,
         };
 
+        console.log(novaMensagem)
+
         try {
-            await axios.post('/api/mensagens', novaMensagem);
-            setListaDeMensagens([...listaDeMensagens, novaMensagem]);
+            // Envia uma requisição POST para a rota '/api/mensagens'
+            const response: AxiosResponse = await axios.post('/api/mensagens', novaMensagem);
+            console.log(response.data)
+            setListaDeMensagens([...listaDeMensagens, response.data.novaMensagem]);
             setMensagem('');
         } catch (error) {
             console.error('Erro ao enviar mensagem:', error);
