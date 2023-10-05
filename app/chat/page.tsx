@@ -1,4 +1,5 @@
 import axios from "axios";
+import {FormComponent} from "@/app/chat/form";
 
 interface Mensagem {
     id: string;
@@ -24,8 +25,31 @@ export async function getMensagens() {
     }
 }
 
+export async function postMensagem(mensagem: string) {
+    try {
+        const novaMensagem = {
+            de: 'JoaoIto', // Substitua com o nome do remetente
+            mensagem: mensagem,
+        };
+
+        const response = await axios.post('http://localhost:3000/api/mensagens', novaMensagem);
+        console.log(response.data);
+    } catch (error) {
+        console.error("Erro ao enviar mensagem!", error);
+    }
+}
+
 export default async function ChatPage() {
     const mensagens = await getMensagens();
+    let mensagemInput: HTMLInputElement | null = null;
+    
+    const handleNovaMensagem = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (mensagemInput) {
+            postMensagem(mensagemInput.value);
+            mensagemInput.value = ''; // Limpa o campo de entrada
+        }
+    };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-primary bg-cover bg-blend-multiply text-neutrals-000">
@@ -55,33 +79,8 @@ export default async function ChatPage() {
                             </li>
                         ))}
                     </ul>
-                    <form
-                        className="flex items-center"
-                        // onSubmit={(e) => {
-                        //     e.preventDefault();
-                        //     handleNovaMensagem();
-                        // }}
-                    >
-                        {/*<textarea*/}
-                        {/*    value={mensagem}*/}
-                        {/*    onChange={(e) => setMensagem(e.target.value)}*/}
-                        {/*    onKeyPress={(e) => {*/}
-                        {/*        if (e.key === 'Enter') {*/}
-                        {/*            e.preventDefault();*/}
-                        {/*            handleNovaMensagem();*/}
-                        {/*        }*/}
-                        {/*    }}*/}
-                        {/*    placeholder="Insira sua mensagem aqui..."*/}
-                        {/*    className="w-full flex bg-slate-500 border border-solid border-2 rounded border-slate-200 resize-none rounded p-2 bg-neutrals-800 mr-4 text-neutral-200"*/}
-                        {/*/>*/}
-                        <button
-                            type="submit"
-                            className="bg-blue-700 text-neutrals-000 px-4 py-2 rounded"
-                        >
-                            Enviar
-                        </button>
-                    </form>
                 </div>
+                <FormComponent/>
             </div>
         </div>
     );
